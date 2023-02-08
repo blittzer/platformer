@@ -1,6 +1,7 @@
 ### The Imports ###
 import pygame
 from playerChar import Player
+from menu import Menu
 
 class GameLoop():
 	"""docstring for GameLoop"""
@@ -12,14 +13,18 @@ class GameLoop():
 		self.running = True
 		self.state = 0
 		self.player = Player(self.screen)
+		self.menu = Menu(self.screen)
+		self.time = 0
 
 	def loop(self):
 		while self.running:
 			self.events()
 			if self.state == 0:
-				self.screen.fill((255,255,255))
-				self.player.draw()
+				self.menu.draw()
 			pygame.display.flip()
+			if self.time % 150 == 0:
+				self.menu.update()
+			self.time += 1
 		pygame.quit()
 
 		
@@ -27,3 +32,5 @@ class GameLoop():
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				self.running = False
+			if self.state == 0:
+				self.menu.events()

@@ -7,7 +7,9 @@ class Player(pygame.sprite.Sprite):
 		super(Player, self).__init__()
 		self.screen = screen
 		self.x = 400
-		self.y = 555
+		self.y = 0
+		self.imgs = []
+		self.imgs.append(pygame.image.load('pics/pC.png'))
 
 	def draw(self):
-		pygame.draw.circle(self.screen, (0,0,255), (self.x,self.y), 45)
+		self.screen.blit(self.imgs[0], (self.x-25, 525-self.y))
