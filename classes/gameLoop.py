@@ -21,6 +21,12 @@ class GameLoop():
 			self.events()
 			if self.state == 0:
 				self.menu.draw()
+			elif self.state == 1:
+				self.screen.fill((255,0,0))
+			elif self.state == 2:
+				self.screen.fill((0,255,0))
+			elif self.state == 3:
+				self.screen.fill((0,0,255))
 			pygame.display.flip()
 			if self.time % 150 == 0:
 				self.menu.update()
@@ -33,4 +39,4 @@ class GameLoop():
 			if event.type == pygame.QUIT:
 				self.running = False
 			if self.state == 0:
-				self.menu.events()
+				self.state = self.menu.events()

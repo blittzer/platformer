@@ -1,10 +1,13 @@
 ### The Imports ###
 import pygame
+from button import Button
 
 class Menu():
 	"""docstring for ClassName"""
 	def __init__(self, screen):
 
+		
+		self.screen = screen
 		self.titImgs = []
 		self.arrowImgs = []
 		self.titImgs.append(pygame.image.load('pics/titleZero.png'))
@@ -27,18 +30,16 @@ class Menu():
 		self.arr = False
 		self.aY = 250
 
-		self.play = pygame.image.load('pics/play.png')
-		self.opts = pygame.image.load('pics/opts.png')
-		self.inst = pygame.image.load('pics/inst.png')
-		
-		self.screen = screen
+		self.play = Button(self.screen, pygame.image.load('pics/play.png'), 350, 250, 250, 35)
+		self.opts = Button(self.screen, pygame.image.load('pics/opts.png'), 350, 290, 250, 35)
+		self.inst = Button(self.screen, pygame.image.load('pics/inst.png'), 350, 330, 250, 35)
 
 	def draw(self):
 		self.screen.fill((150,0,150))
 		self.screen.blit(self.titImgs[self.ind], (350, 150))
-		self.screen.blit(self.play, (350, 250))
-		self.screen.blit(self.opts, (350, 290))
-		self.screen.blit(self.inst, (350, 330))
+		self.play.draw()
+		self.opts.draw()
+		self.inst.draw()
 		if self.arr:
 			self.screen.blit(self.arrowImgs[self.aInd], (300, self.aY))
 
@@ -57,29 +58,37 @@ class Menu():
 			self.aInd += self.aDir
 
 	def events(self):
-		mX, mY = pygame.mouse.get_pos()
-
-		if mX >= 350 and mX <= 600:
-			if mY >= 245 and mY < 285:
+		if self.play.hover() == True:
 				if self.arr == False:
 					self.arr = True
 					self.aInd = 0
 					self.aDir = 1
 				self.aY = 250
-			elif mY >= 285 and mY < 325:
-				if self.arr == False:
-					self.arr = True
-					self.aInd = 0
-					self.aDir = 1
-				self.aY = 290
-			elif mY >= 325 and mY < 365:
-				if self.arr == False:
-					self.arr = True
-					self.aInd = 0
-					self.aDir = 1
-				self.aY = 330
+				if self.play.clicked() == True:
+					return 1
+				else:
+					return 0
+		elif self.opts.hover() == True:
+			if self.arr == False:
+				self.arr = True
+				self.aInd = 0
+				self.aDir = 1
+			self.aY = 290
+			if self.opts.clicked() == True:
+				return 2
 			else:
-				self.arr = False
+				return 0
+		elif self.inst.hover() == True:
+			if self.arr == False:
+				self.arr = True
+				self.aInd = 0
+				self.aDir = 1
+			self.aY = 330
+			if self.inst.clicked() == True:
+				return 3
+			else:
+				return 0
 		else:
 			self.arr = False
+			return 0
 		
