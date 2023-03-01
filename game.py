@@ -15,6 +15,7 @@ from gameLoop import GameLoop
 
 def main():
 	g = GameLoop()
+	g.levelsLoad()
 	g.loop()
 
 if __name__ == '__main__':

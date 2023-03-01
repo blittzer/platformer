@@ -9,7 +9,7 @@ class Player(pygame.sprite.Sprite):
 		self.x = 400
 		self.y = 0
 		self.imgs = []
-		self.imgs.append(pygame.image.load('pics/pC.png'))
+		self.imgs.append(pygame.image.load('pics/pC.png').convert_alpha())
 		self.left = False
 		self.right = False
 		self.gravOn = False
@@ -40,9 +40,9 @@ class Player(pygame.sprite.Sprite):
 				self.right = False
 			elif event.key == pygame.K_w:
 				self.gravOn = True
-				self.jumpTime = pygame.time.get_ticks()
-				self.jumpStart = self.y 
-				self.jumpStartSpeed = 0
+				#self.jumpTime = pygame.time.get_ticks()
+				#self.jumpStart = self.y 
+				#self.jumpStartSpeed = 0
 
 	def move(self):
 		if self.left == True:

@@ -11,15 +11,19 @@ class GameLoop():
 		self.SCREEN_WIDTH = 800
 		self.SCREEN_HEIGHT = 600
 		self.screen = pygame.display.set_mode((self.SCREEN_WIDTH, self.SCREEN_HEIGHT))
+		self.blocks = pygame.display.set_mode((self.SCREEN_WIDTH, self.SCREEN_HEIGHT))
 		self.running = True
 		self.state = 0
 		self.pC = Player(self.screen)
 		self.menu = Menu(self.screen)
 		self.time = 0
-		self.levels = [Levels(self.screen, self.pC)]
+		self.levels = [Levels(self.blocks, self.pC, "levels/lv0.txt")]
 		self.levNum = 0
 
-
+	def levelsLoad(self):
+		for l in self.levels:
+			l.levelRender()
+	
 	def loop(self):
 		while self.running:
 			self.events()
@@ -32,8 +36,9 @@ class GameLoop():
 			elif self.state == 3:
 				self.screen.fill((0,0,255))
 			pygame.display.flip()
-			if self.time % 75 == 0:
+			if self.time % 120 == 0:
 				self.menu.update()
+			if self.time % 60 == 0:
 				self.pC.move()
 			self.time += 1
 		pygame.quit()

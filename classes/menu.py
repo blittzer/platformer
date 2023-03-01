@@ -10,29 +10,29 @@ class Menu():
 		self.screen = screen
 		self.titImgs = []
 		self.arrowImgs = []
-		self.titImgs.append(pygame.image.load('pics/titleZero.png'))
-		self.titImgs.append(pygame.image.load('pics/titleOne.png'))
-		self.titImgs.append(pygame.image.load('pics/titleTwo.png'))
-		self.titImgs.append(pygame.image.load('pics/titleThree.png'))
-		self.titImgs.append(pygame.image.load('pics/titleFour.png'))
-		self.titImgs.append(pygame.image.load('pics/titleFive.png'))
+		self.titImgs.append(pygame.image.load('pics/titleZero.png').convert_alpha())
+		self.titImgs.append(pygame.image.load('pics/titleOne.png').convert_alpha())
+		self.titImgs.append(pygame.image.load('pics/titleTwo.png').convert_alpha())
+		self.titImgs.append(pygame.image.load('pics/titleThree.png').convert_alpha())
+		self.titImgs.append(pygame.image.load('pics/titleFour.png').convert_alpha())
+		self.titImgs.append(pygame.image.load('pics/titleFive.png').convert_alpha())
 		self.ind = 0
 		self.dir = 1
 
-		self.arrowImgs.append(pygame.image.load('pics/arrowOne.png'))
-		self.arrowImgs.append(pygame.image.load('pics/arrowTwo.png'))
-		self.arrowImgs.append(pygame.image.load('pics/arrowThree.png'))
-		self.arrowImgs.append(pygame.image.load('pics/arrowFour.png'))
-		self.arrowImgs.append(pygame.image.load('pics/arrowFive.png'))
-		self.arrowImgs.append(pygame.image.load('pics/arrowSix.png'))
+		self.arrowImgs.append(pygame.image.load('pics/arrowOne.png').convert_alpha())
+		self.arrowImgs.append(pygame.image.load('pics/arrowTwo.png').convert_alpha())
+		self.arrowImgs.append(pygame.image.load('pics/arrowThree.png').convert_alpha())
+		self.arrowImgs.append(pygame.image.load('pics/arrowFour.png').convert_alpha())
+		self.arrowImgs.append(pygame.image.load('pics/arrowFive.png').convert_alpha())
+		self.arrowImgs.append(pygame.image.load('pics/arrowSix.png').convert_alpha())
 		self.aInd = 0
 		self.aDir = 0
 		self.arr = False
 		self.aY = 250
 
-		self.play = Button(self.screen, pygame.image.load('pics/play.png'), 350, 250, 250, 35)
-		self.opts = Button(self.screen, pygame.image.load('pics/opts.png'), 350, 290, 250, 35)
-		self.inst = Button(self.screen, pygame.image.load('pics/inst.png'), 350, 330, 250, 35)
+		self.play = Button(self.screen, pygame.image.load('pics/play.png').convert_alpha(), 350, 250, 250, 35)
+		self.opts = Button(self.screen, pygame.image.load('pics/opts.png').convert_alpha(), 350, 290, 250, 35)
+		self.inst = Button(self.screen, pygame.image.load('pics/inst.png').convert_alpha(), 350, 330, 250, 35)
 
 	def draw(self):
 		self.screen.fill((150,0,150))
